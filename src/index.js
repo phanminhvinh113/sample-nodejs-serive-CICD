@@ -13,7 +13,12 @@ app.get('/items', getItems);
 app.post('/items', addItem);
 app.put('/items/:id', updateItem);
 app.delete('/items/:id', deleteItem);
-
+app.get('/check/status', async (req, res) => {
+    res.sendStatus(200).json({
+        message: 'server ok',
+        status: 200,
+    });
+});
 db.init()
     .then(() => {
         app.listen(3032, () => console.log('Listening on port 3032'));
